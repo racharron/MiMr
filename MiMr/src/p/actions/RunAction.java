@@ -71,7 +71,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 						CompilationUnit compilationUnit = (CompilationUnit) astParser.createAST(null);
 						compilationUnit.accept(new ASTVisitorEx());						
 						String source = workingCopy.getBuffer().getContents();
-						//source = "package p;  class  C {}";
+						//source = "package p;  class  C {}";  //example
 						Document document = new Document(source);
 						compilationUnit.recordModifications();
 						TextEdit edits = compilationUnit.rewrite(document, workingCopy.getJavaProject().getOptions(true));
