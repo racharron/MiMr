@@ -9,14 +9,14 @@
             visible="true"
             id="P.actionSet">
          <menu
-               label="PL Assignment"
+               label="MiMr"
                id="sampleMenu">
             <separator
                   name="sampleGroup">
             </separator>
          </menu>
          <action
-               label="Run"
+               label="Run Refactoring"
                icon="icons/sample.gif"
                class="p.actions.RunAction"
                tooltip="Hello, Eclipse world"
