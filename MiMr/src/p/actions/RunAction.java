@@ -92,6 +92,14 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 				e.printStackTrace();
 			}
 		}
+		
+		// TO DO:
+		// 1. Build database
+		// 2. Run Script
+		//   2.1 Check preconditions
+		//   2.2 Make code changes
+		// 3. Update workspace
+		
 	}
 
 	/**
