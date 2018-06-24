@@ -9,7 +9,7 @@
             visible="true"
             id="P.actionSet">
          <menu
-               label="MiMr"
+               label="CBL Project"
                id="sampleMenu">
             <separator
                   name="sampleGroup">

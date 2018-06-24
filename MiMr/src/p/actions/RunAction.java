@@ -69,10 +69,10 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 						//astParser.setSource(iCompilationUnit);
 						astParser.setSource(workingCopy);
 						CompilationUnit compilationUnit = (CompilationUnit) astParser.createAST(null);
-						compilationUnit.accept(new ASTVisitorEx());						
-						String source = workingCopy.getBuffer().getContents();
-						//source = "package p;  class  C {}";  //example
-						Document document = new Document(source);
+						ASTVisitorEx astVisitorEx = new ASTVisitorEx(workingCopy.getSource());
+						compilationUnit.accept(astVisitorEx);						
+						//String source = workingCopy.getBuffer().getContents();
+						Document document = new Document(astVisitorEx.source);
 						compilationUnit.recordModifications();
 						TextEdit edits = compilationUnit.rewrite(document, workingCopy.getJavaProject().getOptions(true));
 						try {
