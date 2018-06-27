@@ -93,12 +93,10 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 			}
 		}
 		
-		// TO DO:
-		// 1. Build database
-		// 2. Run Script
-		//   2.1 Check preconditions
-		//   2.2 Make code changes
-		// 3. Update workspace
+		// TO DO:  Rename_Instance_Method_Refactoring
+		// 1. Check all preconditions -- what are the preconditions? 
+		// 2. Make code changes -- rename all polymorphic methods
+		// 3. Update workspace -- if a compilation unit has at least one code change, it should be updated. 
 		
 	}
 
