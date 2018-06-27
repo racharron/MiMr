@@ -94,7 +94,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		}
 		
 		// TO DO:  Rename_Instance_Method_Refactoring
-		// 1. Check all preconditions -- what are the preconditions? 
+		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time. 
 		// 2. Make code changes -- rename all polymorphic methods
 		// 3. Update workspace -- if a compilation unit has at least one code change, it should be updated. 
 		
