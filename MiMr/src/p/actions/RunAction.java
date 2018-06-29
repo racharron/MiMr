@@ -94,6 +94,14 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		}
 		
 		// TO DO:  Rename_Instance_Method_Refactoring
+		
+		
+		//RPackage pkg = RProject.findPackage("MyProject", "myPackage");
+		//RClass cls = pkg.findClass("MyClass");
+		//RMethod mth = cls.findMethod("method_name", "java.lang.String", "int", "otherPackage.otherClass");
+		
+		// Assume that we always rename method m(String, int, q.A) in package p of project P.
+		
 		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time. 
 		// 2. Make code changes -- rename all polymorphic methods
 		// 3. Update workspace -- if a compilation unit has at least one code change, it should be updated. 
