@@ -48,6 +48,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 	 */
 	@Override
 	public void run(IAction action) {
+		/*
 		IWorkspace iWorkspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot iWorkspaceRoot = iWorkspace.getRoot();
 		IProject[] iProjectList = iWorkspaceRoot.getProjects();
@@ -92,6 +93,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 				e.printStackTrace();
 			}
 		}
+		*/
 		
 		// TO DO:  Rename_Instance_Method_Refactoring
 		//
@@ -104,10 +106,76 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		//
 		// For now, you may assume that we always rename method m(String, int, q.A) in class A of package p in Eclipse project P.
 		//
-		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time. 
+		
+		String[] parameterTypes = new String[3];
+		parameterTypes[0] = "java.lang.String";
+		parameterTypes[1] = "int";
+		parameterTypes[2] = "q.A";
+		RMethod target = new RMethod("m", parameterTypes);
+		
+		traverseAST("P", "p", "A.java", new ASTVisitor_CheckStatic(target));
+		
+		System.out.println(target.isStatic());
+		
+		
+		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time.
+		//      1.1. static method cannot be renamed by rename-instance-method-refactoring.		
 		// 2. Make code changes -- rename all polymorphic methods
 		// 3. Update workspace -- if a compilation unit has at least one code change, it should be updated. 
 		//
+	}
+	
+	public void traverseAST(String projectName, String packageName, String compilationUnitName, ASTVisitor astVisitor) {
+		IWorkspace iWorkspace = ResourcesPlugin.getWorkspace();
+		IWorkspaceRoot iWorkspaceRoot = iWorkspace.getRoot();
+		IProject[] iProjectList = iWorkspaceRoot.getProjects();
+		for (IProject iProject : iProjectList) {
+			IJavaProject iJavaProject = JavaCore.create(iProject);
+			
+			System.out.println("iJavaProject.getElementName(): " + iJavaProject.getElementName());
+			System.out.println("projectName: " + projectName);
+			
+			if(iJavaProject.getElementName().compareTo(projectName) != 0)
+				continue;
+
+			try {
+				IPackageFragment[] iPackageFragmentList = iJavaProject.getPackageFragments();
+				for (IPackageFragment iPackageFragment : iPackageFragmentList) {
+					if (iPackageFragment.getKind() != IPackageFragmentRoot.K_SOURCE) {
+						continue;
+					}
+					
+					
+					System.out.println("iPackageFragment.getElementName(): " + iPackageFragment.getElementName());
+					System.out.println("packageName: " + packageName);
+					
+					
+					if(iPackageFragment.getElementName().compareTo(packageName) != 0)
+						continue;					
+
+					ICompilationUnit[] iCompilationUnitList = iPackageFragment.getCompilationUnits();
+					for (ICompilationUnit iCompilationUnit : iCompilationUnitList) {
+						
+						
+						System.out.println("iCompilationUnit.getElementName(): " + iCompilationUnit.getElementName());
+						System.out.println("typeName: " + compilationUnitName);
+						
+						if(iCompilationUnit.getElementName().compareTo(compilationUnitName) != 0)
+							continue;						
+						
+						ICompilationUnit workingCopy = iCompilationUnit.getWorkingCopy(null);
+						ASTParser astParser = ASTParser.newParser(AST.JLS3);
+						astParser.setResolveBindings(true);
+						//astParser.setSource(iCompilationUnit);
+						astParser.setSource(workingCopy);
+						CompilationUnit compilationUnit = (CompilationUnit) astParser.createAST(null);
+						compilationUnit.accept(astVisitor);						
+					}
+				}
+			} catch (JavaModelException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
