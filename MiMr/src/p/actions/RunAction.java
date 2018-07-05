@@ -114,8 +114,14 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		RMethod target = new RMethod("m", parameterTypes);
 		
 		traverseAST("P", "p", "A.java", new ASTVisitor_CheckStatic(target));
+		traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
+		
+		RMethod target2 = new RMethod("A1", parameterTypes);
+		traverseAST("P", "p", "A1.java", new ASTVisitor_CheckCon(target2));
 		
 		System.out.println(target.isStatic());
+		System.out.println(target.isNative());
+		// System.out.println(target2.constructorModifiers());
 		
 		
 		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time.
