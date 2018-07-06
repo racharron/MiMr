@@ -36,7 +36,7 @@ public class ASTVisitor_CheckNative extends ASTVisitor{
 			}
 			
 			if(i == target.getParameterTypes().length)
-				
+			
 				target.setNative(Modifier.isNative(node.getModifiers()));
 		}
 		return true;
