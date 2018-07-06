@@ -13,7 +13,6 @@ public class ASTVisitor_CheckNative extends ASTVisitor{
 	public RMethod target = null;
 
 	public ASTVisitor_CheckNative(RMethod target) {
-	
 		this.target = target;
 	}
 	
