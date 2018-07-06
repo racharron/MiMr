@@ -32,7 +32,7 @@ public class ASTVisitor_CheckStatic extends ASTVisitor {
 				if(p.getType().resolveBinding().getQualifiedName().compareTo(parameterType) != 0)
 					break;
 				i++;
-			}
+			} 
 			
 			if(i == target.getParameterTypes().length)
 				target.setStatic(Modifier.isStatic(node.getModifiers()));
