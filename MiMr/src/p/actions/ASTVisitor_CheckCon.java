@@ -1,3 +1,12 @@
+/* TO DO:  Rename_Instance_Method_Refactoring
+ 1. Check preconditions -- what are the preconditions?  Tackle one at a time.
+  		-cannot cause duplication
+ 2. Make code changes -- rename all polymorphic methods
+ 		-Search through code, recording all method names
+ 		-If any duplication is detected, make note of it
+ 		-Replace one of the replicas
+ 3. Update workspace -- if a compilation unit has at least one code change, it should be updated. 
+		*/
 package p.actions;
 
 import java.lang.reflect.Modifier;
@@ -9,10 +18,11 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 
-public class ASTVisitor_CheckNative extends ASTVisitor{
+public class ASTVisitor_CheckCon extends ASTVisitor{
+	
 	public RMethod target = null;
-
-	public ASTVisitor_CheckNative(RMethod target) {
+	
+	public ASTVisitor_CheckCon(RMethod target) {
 		this.target = target;
 	}
 	
@@ -36,9 +46,8 @@ public class ASTVisitor_CheckNative extends ASTVisitor{
 			}
 			
 			if(i == target.getParameterTypes().length)
-				target.setNative(Modifier.isNative(node.getModifiers()));
+				target.setCon(Modifier.constructorModifiers());
 		}
 		return true;
-		
 	}
 }

@@ -117,6 +117,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
 		
 		RMethod target2 = new RMethod("A1", parameterTypes);
+		
 		traverseAST("P", "p", "A1.java", new ASTVisitor_CheckCon(target2));
 		
 		System.out.println(target.isStatic());

@@ -8,6 +8,7 @@ public class RMethod {
 	private int bConstructor = 0;
 	
 	public RMethod(String name, String[] parameterTypes) {
+		
 		this.name = name;
 		this.parameterTypes = parameterTypes;
 	}
