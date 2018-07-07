@@ -13,7 +13,7 @@ public class ASTVisitor_CheckStatic extends ASTVisitor {
 	public ASTVisitor_CheckStatic(RMethod target) {
 		this.target = target;
 	}
-	  
+	   
 	
 	public boolean visit(MethodDeclaration node) {
 		System.out.println("node.getName().getIdentifier(): " + node.getName().getIdentifier());
@@ -32,7 +32,7 @@ public class ASTVisitor_CheckStatic extends ASTVisitor {
 				if(p.getType().resolveBinding().getQualifiedName().compareTo(parameterType) != 0)
 					break;
 				i++;
-			}
+			} 
 			
 			if(i == target.getParameterTypes().length)
 				target.setStatic(Modifier.isStatic(node.getModifiers()));
