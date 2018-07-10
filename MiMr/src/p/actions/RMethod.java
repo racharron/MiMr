@@ -5,7 +5,7 @@ public class RMethod {
 	private String[] parameterTypes;
 	private boolean bStatic = false;
 	private boolean bNative = false;
-	private int bConstructor = 0;
+	private boolean bConstructor = false;
 	
 	public RMethod(String name, String[] parameterTypes) {
 		
@@ -37,11 +37,11 @@ public class RMethod {
 		return this.bNative;
 	}
 	
-/*	public void setCon(int i) {
-		this.bConstructor = i;
+	public void setConstructor(boolean bConstructor) {
+		this.bConstructor = bConstructor;
 	}
 	
-	public int constructorModifiers() {
+	public boolean isConstructor() {
 		return this.bConstructor;
-	}*/
+	}
 }

@@ -111,18 +111,18 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		parameterTypes[0] = "java.lang.String";
 		parameterTypes[1] = "int";
 		parameterTypes[2] = "q.A";
-		RMethod target = new RMethod("m", parameterTypes);
+		RMethod target = new RMethod("A", parameterTypes);
 		
-		traverseAST("P", "p", "A.java", new ASTVisitor_CheckStatic(target));
-		traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
+		traverseAST("P", "p", "A.java", new ASTVisitor_MethodDeclaration(target));
+		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
 		
-		RMethod target2 = new RMethod("A1", parameterTypes);
+		//RMethod target2 = new RMethod("A1", parameterTypes);
 		
-		traverseAST("P", "p", "A1.java", new ASTVisitor_CheckCon(target2));
+		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckCon(target));
 		
 		System.out.println(target.isStatic());
 		System.out.println(target.isNative());
-		// System.out.println(target2.constructorModifiers());
+		System.out.println(target.isConstructor());
 		
 		
 		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time.

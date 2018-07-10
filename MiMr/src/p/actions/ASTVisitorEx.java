@@ -58,6 +58,7 @@ public class ASTVisitorEx extends ASTVisitor {
 		System.out.println();
 			return true;
 		}
+		
 	public boolean visit(Assignment node) {
 		//Prints cases where a variable receives a new value (ex. v += 3)
 		System.out.println(node);
