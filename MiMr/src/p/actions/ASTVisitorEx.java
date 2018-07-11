@@ -30,12 +30,12 @@ public class ASTVisitorEx extends ASTVisitor {
 	
 	
 // Testing grounds 
-	/*public boolean visit(MethodDeclaration node) {
+	public boolean visit(MethodDeclaration node) {
 		//Prints method name + contents
 		System.out.println(node + "*");
 		System.out.println();
 			return true;
-		}*/
+		}
 	
 	public boolean visit(BlockComment node) {
 		//Research suggests it should print text enclosed in a block comment (*/ - /*). Cannot seem to make it work, however...

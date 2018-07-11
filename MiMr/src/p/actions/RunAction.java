@@ -112,7 +112,6 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		parameterTypes[1] = "int";
 		parameterTypes[2] = "q.A";
 		RMethod target = new RMethod("A", parameterTypes);
-		
 		traverseAST("P", "p", "A.java", new ASTVisitor_MethodDeclaration(target));
 		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
 		
@@ -123,7 +122,6 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		System.out.println(target.isStatic());
 		System.out.println(target.isNative());
 		System.out.println(target.isConstructor());
-		
 		
 		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time.
 		//      1.1. static method cannot be renamed by rename-instance-method-refactoring.		
