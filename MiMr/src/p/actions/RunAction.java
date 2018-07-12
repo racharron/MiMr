@@ -110,8 +110,8 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		String[] parameterTypes = new String[3];
 		parameterTypes[0] = "java.lang.String";
 		parameterTypes[1] = "int";
-		parameterTypes[2] = "q.A";
-		RMethod target = new RMethod("A", parameterTypes);
+		parameterTypes[2] = "q.B";
+		RMethod target = new RMethod("m", parameterTypes);
 		traverseAST("P", "p", "A.java", new ASTVisitor_MethodDeclaration(target));
 		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
 		
@@ -123,6 +123,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		System.out.println(target.isNative());
 		System.out.println(target.isConstructor());
 		
+		target.rename("n");
 		// 1. Check preconditions -- what are the preconditions?  Tackle one at a time.
 		//      1.1. static method cannot be renamed by rename-instance-method-refactoring.		
 		// 2. Make code changes -- rename all polymorphic methods
@@ -153,7 +154,8 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 					
 					System.out.println("iPackageFragment.getElementName(): " + iPackageFragment.getElementName());
 					System.out.println("packageName: " + packageName);
-					
+					ASTVisitor_MethodDeclaration temp = (ASTVisitor_MethodDeclaration)astVisitor;
+					temp.target.setPackageName(packageName);
 					
 					if(iPackageFragment.getElementName().compareTo(packageName) != 0)
 						continue;					
@@ -173,7 +175,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 						astParser.setResolveBindings(true);
 						//astParser.setSource(iCompilationUnit);
 						astParser.setSource(workingCopy);
-						CompilationUnit compilationUnit = (CompilationUnit) astParser.createAST(null);
+						CompilationUnit compilationUnit = (CompilationUnit) astParser.createAST(null);						
 						compilationUnit.accept(astVisitor);						
 					}
 				}
