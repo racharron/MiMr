@@ -129,7 +129,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		//
 	}
 	
-	public void traverseAST(String projectName, String packageName, String compilationUnitName, ASTVisitor astVisitor) {
+	public void traverseAST(String projectName, String packageName, String compilationUnitName, ASTVisitor_MethodDeclaration astVisitor) {
 		IWorkspace iWorkspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot iWorkspaceRoot = iWorkspace.getRoot();
 		IProject[] iProjectList = iWorkspaceRoot.getProjects();
@@ -152,8 +152,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 					
 					System.out.println("iPackageFragment.getElementName(): " + iPackageFragment.getElementName());
 					System.out.println("packageName: " + packageName);
-					ASTVisitor_MethodDeclaration temp = (ASTVisitor_MethodDeclaration)astVisitor;
-					temp.target.setPackageName(packageName);
+					astVisitor.target.setPackageName(packageName);
 					
 					if(iPackageFragment.getElementName().compareTo(packageName) != 0)
 						continue;					
