@@ -73,12 +73,12 @@ public class RMethod {
 		this.bNative = bNative;
 	}
 	
-	public boolean isNative() {
+	public boolean isNative() { 
 		return this.bNative;
 	}
 	
 	public void setConstructor(boolean bConstructor) {
-		this.bConstructor = bConstructor;
+		this.bConstructor = bConstructor; 
 	}
 	
 	public boolean isConstructor() {

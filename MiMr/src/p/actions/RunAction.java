@@ -97,7 +97,7 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		
 		// TO DO:  Rename_Instance_Method_Refactoring
 		//
-		//The script will look like this:
+		//The script will look like this: 
 		//
 		//RPackage pkg = RProject.findPackage("P", "p");
 		//RClass cls = pkg.findClass("A");

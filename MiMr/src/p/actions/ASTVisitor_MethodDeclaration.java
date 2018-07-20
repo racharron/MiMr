@@ -33,13 +33,13 @@ public class ASTVisitor_MethodDeclaration extends ASTVisitor {
 		//Collect ALL methods (name, parameter types) in the target program and store them in RMethod.allMethods
 		String[] parameterTypes = new String[node.parameters().size()];
 		for(int i = 0; i < node.parameters().size(); i++) {
-			SingleVariableDeclaration p = (SingleVariableDeclaration)node.parameters().get(i);
+			SingleVariableDeclaration p = (SingleVariableDeclaration)node.parameters().get(i); 
 			parameterTypes[i] = p.getType().resolveBinding().getQualifiedName();
 		}		
 		RMethod mth = new RMethod(node.getName().getIdentifier(), parameterTypes);
 		RMethod.allMethods.add(mth);
 		
-		if(node.getName().getIdentifier().compareTo(target.getName()) == 0) {
+		if(node.getName().getIdentifier().compareTo(target.getName()) == 0) { 
 			List parameterList = node.parameters();
 			int i = 0;
 			for(String parameterType : target.getParameterTypes()) {				
