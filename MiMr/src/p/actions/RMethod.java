@@ -86,6 +86,7 @@ public class RMethod {
 	}
 	
 	public boolean rename(String newName) {
+		//precondition checks
 		for(RMethod mth : RMethod.allMethods) {
 			if(mth.getName().compareTo(newName) == 0) {
 				if(this.parameterTypes.length == mth.parameterTypes.length) {
@@ -100,6 +101,8 @@ public class RMethod {
 				}
 			}
 		}
+		
+		//code changes
 		
 		return true;
 	}

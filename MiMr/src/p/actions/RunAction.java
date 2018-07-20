@@ -112,13 +112,11 @@ public class RunAction implements IWorkbenchWindowActionDelegate {
 		parameterTypes[1] = "int";
 		parameterTypes[2] = "q.B";
 		RMethod target = new RMethod("m", parameterTypes);
+		
 		traverseAST("P", "p", "A.java", new ASTVisitor_MethodDeclaration(target));
-		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));
-		
-		//RMethod target2 = new RMethod("A1", parameterTypes);
-		
-		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckCon(target));
-		
+		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckNative(target));		
+		//RMethod target2 = new RMethod("A1", parameterTypes);		
+		//traverseAST("P", "p", "A.java", new ASTVisitor_CheckCon(target));		
 		System.out.println(target.isStatic());
 		System.out.println(target.isNative());
 		System.out.println(target.isConstructor());
