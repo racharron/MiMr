@@ -93,7 +93,7 @@ public class RMethod {
 					System.out.println("Found a method with the same name and parameter types but the method may or may not be duplicate.  The method is:");
 					System.out.println(mth.name + "(");			
 					for(int i = 0; i < mth.parameterTypes.length; i++) {
-						if(this.parameterTypes[i].compareTo(mth.parameterTypes[i]) == 0) {
+						if(this.parameterTypes[i].compareTo(mth.parameterTypes[i]) == 0) { 
 							System.out.println(mth.parameterTypes[i] + " ");
 						}
 					} 
